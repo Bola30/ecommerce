@@ -1,4 +1,6 @@
- import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class Homepage extends StatelessWidget {
   List Categories = [
@@ -25,7 +27,7 @@ class Homepage extends StatelessWidget {
                       border: InputBorder.none,
                       fillColor: Colors.grey[200],
                       filled: true,
-                      prefixIcon: const Icon(
+                      prefixIcon: const Icon( 
                         Icons.search,
                         color: Colors.blue,
                         size: 30,
@@ -36,8 +38,14 @@ class Homepage extends StatelessWidget {
                 Padding(
                     padding: const EdgeInsets.only(left: 10),
                     child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.menu),
+                      onPressed: () async {
+                        GoogleSignIn googleSignIn = GoogleSignIn();
+                        googleSignIn.disconnect();
+                        await FirebaseAuth.instance.signOut();
+                        Navigator.of(context)
+                            .pushNamedAndRemoveUntil("login", (route) => false);
+                      },
+                      icon: const Icon(Icons.exit_to_app),
                       iconSize: 40,
                     )),
               ],
@@ -131,7 +139,8 @@ class Homepage extends StatelessWidget {
                     children: [
                       Container(
                         child: Image.network(
-"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCiyNeDR-Mlve4GTnPQwDlSb-vPXnecOJvQQ&s" ,                         height: 170,
+                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCiyNeDR-Mlve4GTnPQwDlSb-vPXnecOJvQQ&s",
+                          height: 170,
                           width: 100,
                         ),
                       ),
@@ -192,7 +201,7 @@ class Homepage extends StatelessWidget {
                     children: [
                       Container(
                         child: Image.network(
-                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCiyNeDR-Mlve4GTnPQwDlSb-vPXnecOJvQQ&s" ,
+                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCiyNeDR-Mlve4GTnPQwDlSb-vPXnecOJvQQ&s",
                           height: 170,
                           width: 100,
                         ),
@@ -226,4 +235,3 @@ class Homepage extends StatelessWidget {
     );
   }
 }
- 

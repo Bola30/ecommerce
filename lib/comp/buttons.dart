@@ -8,6 +8,7 @@ class Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
+      minWidth: 400,
       color: const Color.fromARGB(255, 22, 87, 139),
       height: 40,
       shape: RoundedRectangleBorder(

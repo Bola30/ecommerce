@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class CustomTextformfield extends StatelessWidget {
   final String hintText;
   final TextEditingController mycontroller;
-  const CustomTextformfield({super.key, required this.hintText, required this.mycontroller});
+  final String? Function(String?)? validator;
+  const CustomTextformfield({super.key, required this.hintText, required this.mycontroller,required this.validator,});
 
   @override
   Widget build(BuildContext context) {
     return  TextFormField(
+      validator: validator,
       controller:mycontroller ,
               decoration: InputDecoration(
                   hintText:hintText,

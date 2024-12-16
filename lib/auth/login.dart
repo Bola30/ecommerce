@@ -124,7 +124,7 @@ class _LoginState extends State<Login> {
                               context: context,
                               dialogType: DialogType.error,
                               title: 'Error',
-                              desc: 'Something went wrong!',
+                              desc: e.message ?? 'Something went wrong!',
                             ).show();
                           } else {
                             print('Unknown error: $e');

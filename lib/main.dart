@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:first_test/add/cart.dart';
 import 'package:first_test/auth/login.dart';
 import 'package:first_test/homepage.dart';
 import 'package:first_test/signup.dart';
@@ -20,6 +21,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  get index => null;
+
 
   @override
   void initState() {
@@ -41,9 +44,11 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home:( FirebaseAuth.instance.currentUser != null && FirebaseAuth.instance.currentUser!.emailVerified ) ? Homepage () : const Login(),
        routes: {  
-      "signup"  : (context)  =>  const Signup(),
-      "login"   : (context)  =>  const Login(), 
-      "homepage":  (context) =>  Homepage()   
+      "signup"  : (context)  =>   Signup(),
+      "login"   : (context)  =>   Login(), 
+      "homepage":  (context) =>  Homepage()  , 
+
+
         }
     ));
   }
